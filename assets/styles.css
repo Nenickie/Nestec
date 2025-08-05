@@ -78,8 +78,9 @@ nav.nav-desktop {
   color: rgb(15, 170, 10);
   font-weight: bold;
 }
-
-/* Position menu icon inside header */
+.nav-links li {
+  position: relative;
+}
 .menu-icon {
   display: none;
   cursor: pointer;
@@ -100,7 +101,7 @@ nav.nav-desktop {
 
 /* Hero Section */
 .hero-section {
-  background: url('images/pexels-simlibas-16886315.jpg') no-repeat center center/cover;
+  background: url('/assets/images/pexels-simlibas-16886315.jpg') no-repeat center center/cover;
   height: 100vh;
   position: relative;
   display: flex;
@@ -117,7 +118,7 @@ nav.nav-desktop {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
@@ -161,46 +162,125 @@ nav.nav-desktop {
 
 .section-title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
-  color: rgb(15, 170, 10);
   margin-bottom: 20px;
   font-family: 'Playfair Display', serif;
+}
+
+.highlight-green {
+  color: rgb(15, 170, 10);
+  font-weight: 700;
 }
 
 .about-content {
   display: block;
   justify-content: space-between;
-  align-items: center;
-  text-align: center;
+  /*align-items: center;
+  text-align: center;*/
+  margin: 0 auto;
 }
 
 .about-content p {
   font-size: 20px;
   font-weight: 700;
-  text-align: center;
+   margin-bottom: 10px;   /* Adds space below each paragraph */
+   padding-bottom: 5px;   /* Adds extra padding below each paragraph */
+  /*text-align: center;*/
 }
 
-.about-cards {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-top: 20px;
+.space {
+    padding-top: 5px; /* Adds space between paragraphs */
+    padding-bottom: 5px; /* Adds space below paragraphs */
+}
+.partner {
+    font-size: 21px;
+    font-weight: 700;
 }
 
-.about-card {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 1px;
-  flex: 1;
+.who-we-are {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+/* Desktop styles */
+.about-cards-stacked {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 150px;
+    min-height: 150px;
 }
 
-.about-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 1px;
-  margin-bottom: 20px;
+.about-card-img {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    object-fit: cover;
+    background: #fff;
+    transition: box-shadow 0.3s;
+    border: 3px solid #F5F5DC;
+}
+
+.img1 { top: 60%; left: 0%; z-index: 1; }
+.img2 { top: 30%; left: 25%; z-index: 2; }
+.img3 { top: 0%; left: 55%; z-index: 3; }
+
+.about-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.about-image-col {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.about-content-col {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .about-section {
+        padding: 20px 10px;
+    }
+
+    .about-flex {
+        flex-direction: column-reverse; /* Move image on top */
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-image-col {
+        justify-content: center;
+        margin-top: -40px; /* Moves the image stack UP */
+    }
+
+    .about-cards-stacked {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-card-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .img1 { top: 60px; left: 0px; }
+    .img2 { top: 30px; left: 20px; }
+    .img3 { top: 0px; left: 40px; }
 }
 
 /* Services Section */
@@ -308,6 +388,66 @@ nav.nav-desktop {
 .footer a:hover {
   color: #0f5f07;
   text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-col {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile Navigation */
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: 90px;
+  right: 0;
+  background-color: #fff;
+  width: 70%;
+  height: 100vh;
+  padding: 20px;
+  z-index: 1500;
+  text-align: center;
+  box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-mobile.active {
+  transform: translateX(0);
+}
+
+.nav-mobile .nav-links {
+  display: block;
+}
+
+.nav-mobile .nav-links li {
+  margin-bottom: 20px;
+}
+@media (max-width: 992px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .nav-mobile.active {
+    display: block;
+    transform: translateX(0);
+  }
 }
 
 /* Responsive Design */
